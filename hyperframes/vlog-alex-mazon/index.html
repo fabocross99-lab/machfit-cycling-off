@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Entrené con Alex Mazón — vlog</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Barlow Condensed"; font-weight: 700; src: url("assets/fonts/barlow-condensed-latin-700-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Barlow Condensed"; font-weight: 800; src: url("assets/fonts/barlow-condensed-latin-800-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Barlow"; font-weight: 600; src: url("assets/fonts/barlow-latin-600-normal.woff2") format("woff2"); }
+      :root { --black: #0c0c0c; --gold: #d4af37; --ink: #f6f1e4; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--black); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--black); font-family: "Barlow Condensed", sans-serif; }
+      .shot { position: absolute; inset: 0; transform-origin: 50% 45%; }
+      .shot video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #flash { position: absolute; inset: 0; background: var(--ink); opacity: 0; pointer-events: none; }
+
+      /* Gancho */
+      #hook-title { position: absolute; left: 0; right: 0; top: 0; height: 900px; padding: 250px 90px 0; background: linear-gradient(180deg, rgba(12,12,12,0.86) 0%, rgba(12,12,12,0.6) 55%, rgba(12,12,12,0) 100%); }
+      .hook-line { display: block; overflow: hidden; }
+      .hook-word { display: block; text-transform: uppercase; line-height: 0.92; }
+      #hook-a { font-weight: 700; font-size: 104px; color: var(--ink); letter-spacing: 0.02em; }
+      #hook-b { font-weight: 800; font-size: 188px; color: var(--gold); letter-spacing: 0.01em; }
+      #hook-rule { width: 420px; height: 8px; margin-top: 26px; background: var(--gold); transform-origin: 0 50%; }
+
+      /* Etiquetas */
+      .tag-slot { position: absolute; left: 90px; right: 90px; top: 1180px; height: 140px; }
+      .tag { display: inline-block; background: var(--gold); padding: 18px 34px 14px; box-shadow: 0 18px 50px rgba(0,0,0,0.35); }
+      .tag-text { display: block; font-weight: 800; font-size: 76px; line-height: 1; color: var(--black); text-transform: uppercase; letter-spacing: 0.02em; }
+
+      /* Nombre de Alex */
+      #lower-third { position: absolute; left: 90px; right: 90px; top: 1130px; height: 250px; }
+      #lt-kicker { display: inline-block; background: var(--black); color: var(--gold); font-family: "Barlow", sans-serif; font-weight: 600; font-size: 34px; letter-spacing: 0.24em; padding: 10px 22px; text-transform: uppercase; }
+      #lt-name-box { margin-top: 10px; display: inline-block; background: var(--gold); padding: 14px 34px 8px; }
+      #lt-name { display: block; font-weight: 800; font-size: 120px; line-height: 1; color: var(--black); text-transform: uppercase; }
+
+      /* Marca */
+      #bug { position: absolute; left: 90px; top: 180px; height: 60px; }
+      #bug-text { display: inline-block; background: rgba(12,12,12,0.78); color: var(--gold); font-weight: 800; font-size: 40px; letter-spacing: 0.3em; padding: 8px 10px 6px 20px; }
+
+      /* Pantalla final */
+      #endcard { position: absolute; inset: 0; background: var(--black); }
+      #end-glow { position: absolute; left: 540px; top: 900px; width: 1400px; height: 1400px; margin: -700px 0 0 -700px; border-radius: 50%; background: radial-gradient(circle, rgba(212,175,55,0.22) 0%, rgba(212,175,55,0) 62%); }
+      #end-stack { position: absolute; left: 90px; right: 90px; top: 700px; height: 520px; display: flex; flex-direction: column; align-items: center; }
+      #end-kicker { font-family: "Barlow", sans-serif; font-weight: 600; font-size: 38px; letter-spacing: 0.32em; color: var(--ink); text-transform: uppercase; }
+      #end-logo { margin-top: 20px; font-weight: 800; font-size: 230px; line-height: 0.95; letter-spacing: 0.08em; color: var(--gold); }
+      #end-rule { margin-top: 30px; width: 560px; height: 8px; background: var(--gold); transform-origin: 50% 50%; }
+      #end-sub { margin-top: 40px; font-weight: 700; font-size: 64px; letter-spacing: 0.06em; color: var(--ink); text-transform: uppercase; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="52.2" data-width="1080" data-height="1920" data-fps="30">
+
+      <div class="shot" id="w-hook">
+        <video id="v-hook" src="assets/footage.mp4" data-start="0" data-duration="3" data-media-start="46" data-track-index="0" muted playsinline></video>
+      </div>
+      <div class="shot" id="w-llegada">
+        <video id="v-llegada" src="assets/footage.mp4" data-start="3" data-duration="2.2" data-media-start="6.3" data-track-index="0" muted playsinline></video>
+      </div>
+      <div class="shot" id="w-serie">
+        <video id="v-serie" src="assets/footage.mp4" data-start="5.2" data-duration="4" data-media-start="12" data-playback-rate="1.5" data-track-index="0" muted playsinline></video>
+      </div>
+      <div class="shot" id="w-alex-entra">
+        <video id="v-alex-entra" src="assets/footage.mp4" data-start="9.2" data-duration="4.5" data-media-start="26.5" data-track-index="0" muted playsinline></video>
+      </div>
+      <div class="shot" id="w-correccion">
+        <video id="v-correccion" src="assets/footage.mp4" data-start="13.7" data-duration="4.5" data-media-start="34" data-track-index="0" muted playsinline></video>
+      </div>
+      <div class="shot" id="w-brazos">
+        <video id="v-brazos" src="assets/footage.mp4" data-start="18.2" data-duration="5" data-media-start="49.5" data-track-index="0" muted playsinline></video>
+      </div>
+      <div class="shot" id="w-solo">
+        <video id="v-solo" src="assets/footage.mp4" data-start="23.2" data-duration="5" data-media-start="91.5" data-playback-rate="1.25" data-track-index="0" muted playsinline></video>
+      </div>
+      <div class="shot" id="w-siguiente">
+        <video id="v-siguiente" src="assets/footage.mp4" data-start="28.2" data-duration="5" data-media-start="186" data-playback-rate="1.5" data-track-index="0" muted playsinline></video>
+      </div>
+      <div class="shot" id="w-tank">
+        <video id="v-tank" src="assets/footage.mp4" data-start="33.2" data-duration="4" data-media-start="243" data-track-index="0" muted playsinline></video>
+      </div>
+      <div class="shot" id="w-coach">
+        <video id="v-coach" src="assets/footage.mp4" data-start="37.2" data-duration="8" data-media-start="255" data-track-index="0" muted playsinline></video>
+      </div>
+      <div class="shot" id="w-cierre">
+        <video id="v-cierre" src="assets/footage.mp4" data-start="45.2" data-duration="3.5" data-media-start="270.5" data-track-index="0" muted playsinline></video>
+      </div>
+      <div id="flash"></div>
+
+      <div id="hook" class="clip" data-start="0" data-duration="3" data-track-index="2">
+        <div id="hook-title">
+          <span class="hook-line"><span class="hook-word" id="hook-a">Entrené con</span></span>
+          <span class="hook-line"><span class="hook-word" id="hook-b">Alex Mazón</span></span>
+          <div id="hook-rule"></div>
+        </div>
+      </div>
+
+      <div id="bug" class="clip" data-start="3" data-duration="45.7" data-track-index="4">
+        <span id="bug-text">MACHFIT</span>
+      </div>
+
+      <div id="lower-third" class="clip" data-start="9.6" data-duration="3.9" data-track-index="3">
+        <span id="lt-kicker">Entrenando con</span>
+        <div id="lt-name-box"><span id="lt-name">Alex Mazón</span></div>
+      </div>
+
+      <div id="tag-espalda" class="clip tag-slot" data-start="3.2" data-duration="5.6" data-track-index="3">
+        <div class="tag" id="tag-espalda-box"><span class="tag-text">DÍA DE ESPALDA</span></div>
+      </div>
+      <div id="tag-correccion" class="clip tag-slot" data-start="14" data-duration="4" data-track-index="3">
+        <div class="tag" id="tag-correccion-box"><span class="tag-text">CORRIGIENDO LA TÉCNICA</span></div>
+      </div>
+      <div id="tag-aprendido" class="clip tag-slot" data-start="23.5" data-duration="4.5" data-track-index="3">
+        <div class="tag" id="tag-aprendido-box"><span class="tag-text">APLICANDO LO APRENDIDO</span></div>
+      </div>
+      <div id="tag-siguiente" class="clip tag-slot" data-start="28.5" data-duration="4.3" data-track-index="3">
+        <div class="tag" id="tag-siguiente-box"><span class="tag-text">SIGUIENTE EN LA MÁQUINA</span></div>
+      </div>
+      <div id="tag-coach" class="clip tag-slot" data-start="39" data-duration="5.8" data-track-index="3">
+        <div class="tag" id="tag-coach-box"><span class="tag-text">ALEX EN MODO COACH</span></div>
+      </div>
+      <div id="tag-completado" class="clip tag-slot" data-start="45.5" data-duration="3.1" data-track-index="3">
+        <div class="tag" id="tag-completado-box"><span class="tag-text">DÍA COMPLETADO</span></div>
+      </div>
+
+      <div id="endcard" class="clip" data-start="48.7" data-duration="3.5" data-track-index="5">
+        <div id="end-glow"></div>
+        <div id="end-stack">
+          <span id="end-kicker">Día de espalda</span>
+          <span id="end-logo">MACHFIT</span>
+          <div id="end-rule"></div>
+          <span id="end-sub">Nos vemos en el próximo</span>
+        </div>
+      </div>
+
+      <audio id="a-hook" src="assets/footage.mp4" data-start="0" data-duration="3" data-media-start="46" data-track-index="10" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.05,"v":0.8},{"t":2.92,"v":0.8},{"t":3,"v":0}]}]}'></audio>
+      <audio id="a-llegada" src="assets/footage.mp4" data-start="3" data-duration="2.2" data-media-start="6.3" data-track-index="10" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.05,"v":0.8},{"t":2.12,"v":0.8},{"t":2.2,"v":0}]}]}'></audio>
+      <audio id="a-serie" src="assets/footage.mp4" data-start="5.2" data-duration="4" data-media-start="12" data-playback-rate="1.5" data-track-index="10" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.05,"v":0.8},{"t":3.92,"v":0.8},{"t":4,"v":0}]}]}'></audio>
+      <audio id="a-alex-entra" src="assets/footage.mp4" data-start="9.2" data-duration="4.5" data-media-start="26.5" data-track-index="10" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.05,"v":0.8},{"t":4.42,"v":0.8},{"t":4.5,"v":0}]}]}'></audio>
+      <audio id="a-correccion" src="assets/footage.mp4" data-start="13.7" data-duration="4.5" data-media-start="34" data-track-index="10" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.05,"v":0.8},{"t":4.42,"v":0.8},{"t":4.5,"v":0}]}]}'></audio>
+      <audio id="a-brazos" src="assets/footage.mp4" data-start="18.2" data-duration="5" data-media-start="49.5" data-track-index="10" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.05,"v":0.8},{"t":4.92,"v":0.8},{"t":5,"v":0}]}]}'></audio>
+      <audio id="a-solo" src="assets/footage.mp4" data-start="23.2" data-duration="5" data-media-start="91.5" data-playback-rate="1.25" data-track-index="10" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.05,"v":0.8},{"t":4.92,"v":0.8},{"t":5,"v":0}]}]}'></audio>
+      <audio id="a-siguiente" src="assets/footage.mp4" data-start="28.2" data-duration="5" data-media-start="186" data-playback-rate="1.5" data-track-index="10" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.05,"v":0.8},{"t":4.92,"v":0.8},{"t":5,"v":0}]}]}'></audio>
+      <audio id="a-tank" src="assets/footage.mp4" data-start="33.2" data-duration="4" data-media-start="243" data-track-index="10" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.05,"v":0.8},{"t":3.92,"v":0.8},{"t":4,"v":0}]}]}'></audio>
+      <audio id="a-coach" src="assets/footage.mp4" data-start="37.2" data-duration="8" data-media-start="255" data-track-index="10" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.05,"v":0.8},{"t":7.92,"v":0.8},{"t":8,"v":0}]}]}'></audio>
+      <audio id="a-cierre" src="assets/footage.mp4" data-start="45.2" data-duration="3.5" data-media-start="270.5" data-track-index="10" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.05,"v":0.8},{"t":3.42,"v":0.8},{"t":3.5,"v":0}]}]}'></audio>
+      <audio id="sfx-whoosh" src="assets/sfx/whoosh.mp3" data-start="0.05" data-duration="0.57" data-volume="0.45" data-track-index="11"></audio>
+      <audio id="sfx-impact" src="assets/sfx/impact-bass-1.mp3" data-start="48.7" data-duration="2" data-volume="0.7" data-track-index="11"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#flash", { opacity: 0 }, 0);
+
+      // Gancho: empuje lento sobre la toma y título que sube por máscara
+      tl.fromTo("#w-hook", { scale: 1.0 }, { scale: 1.08, duration: 3, ease: "none" }, 0);
+      tl.fromTo("#hook-a", { yPercent: 105 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }, 0.1);
+      tl.fromTo("#hook-b", { yPercent: 105 }, { yPercent: 0, duration: 0.55, ease: "expo.out" }, 0.24);
+      tl.fromTo("#hook-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.45);
+      tl.to("#hook-title", { opacity: 0, y: -40, duration: 0.3, ease: "power2.in" }, 2.68);
+
+      // Cortes: destello corto + punch-in que se asienta
+      tl.fromTo("#flash", { opacity: 0.45 }, { opacity: 0, duration: 0.14, ease: "power1.out", immediateRender: false }, 3);
+      tl.fromTo("#w-llegada", { scale: 1.07 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 3);
+      tl.fromTo("#flash", { opacity: 0.45 }, { opacity: 0, duration: 0.14, ease: "power1.out", immediateRender: false }, 5.2);
+      tl.fromTo("#w-serie", { scale: 1.07 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 5.2);
+      tl.fromTo("#flash", { opacity: 0.45 }, { opacity: 0, duration: 0.14, ease: "power1.out", immediateRender: false }, 9.2);
+      tl.fromTo("#w-alex-entra", { scale: 1.07 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 9.2);
+      tl.fromTo("#flash", { opacity: 0.45 }, { opacity: 0, duration: 0.14, ease: "power1.out", immediateRender: false }, 13.7);
+      tl.fromTo("#w-correccion", { scale: 1.07 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 13.7);
+      tl.fromTo("#flash", { opacity: 0.45 }, { opacity: 0, duration: 0.14, ease: "power1.out", immediateRender: false }, 18.2);
+      tl.fromTo("#w-brazos", { scale: 1.07 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 18.2);
+      tl.fromTo("#flash", { opacity: 0.45 }, { opacity: 0, duration: 0.14, ease: "power1.out", immediateRender: false }, 23.2);
+      tl.fromTo("#w-solo", { scale: 1.07 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 23.2);
+      tl.fromTo("#flash", { opacity: 0.45 }, { opacity: 0, duration: 0.14, ease: "power1.out", immediateRender: false }, 28.2);
+      tl.fromTo("#w-siguiente", { scale: 1.07 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 28.2);
+      tl.fromTo("#flash", { opacity: 0.45 }, { opacity: 0, duration: 0.14, ease: "power1.out", immediateRender: false }, 33.2);
+      tl.fromTo("#w-tank", { scale: 1.07 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 33.2);
+      tl.fromTo("#flash", { opacity: 0.45 }, { opacity: 0, duration: 0.14, ease: "power1.out", immediateRender: false }, 37.2);
+      tl.fromTo("#w-coach", { scale: 1.07 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 37.2);
+      tl.fromTo("#flash", { opacity: 0.45 }, { opacity: 0, duration: 0.14, ease: "power1.out", immediateRender: false }, 45.2);
+      tl.fromTo("#w-cierre", { scale: 1.07 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 45.2);
+
+      // Marca
+      tl.fromTo("#bug-text", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 3.15);
+
+      // Nombre de Alex
+      tl.fromTo("#lt-kicker", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.4, ease: "expo.out" }, 9.6);
+      tl.fromTo("#lt-name-box", { clipPath: "inset(0% 100% 0% 0%)", x: -30 }, { clipPath: "inset(0% 0% 0% 0%)", x: 0, duration: 0.5, ease: "expo.out" }, 9.72);
+      tl.fromTo("#lt-name", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 9.85);
+      tl.to(["#lt-kicker", "#lt-name-box"], { clipPath: "inset(0% 0% 0% 100%)", duration: 0.3, ease: "power2.in", stagger: 0.06 }, 13.1);
+
+      // Etiquetas
+      tl.fromTo("#tag-espalda-box", { clipPath: "inset(0% 100% 0% 0%)", x: -30 }, { clipPath: "inset(0% 0% 0% 0%)", x: 0, duration: 0.45, ease: "expo.out" }, 3.2);
+      tl.fromTo("#tag-espalda .tag-text", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 3.32);
+      tl.to("#tag-espalda-box", { clipPath: "inset(0% 0% 0% 100%)", duration: 0.3, ease: "power2.in" }, 8.48);
+      tl.fromTo("#tag-correccion-box", { clipPath: "inset(0% 100% 0% 0%)", x: -30 }, { clipPath: "inset(0% 0% 0% 0%)", x: 0, duration: 0.45, ease: "expo.out" }, 14);
+      tl.fromTo("#tag-correccion .tag-text", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 14.12);
+      tl.to("#tag-correccion-box", { clipPath: "inset(0% 0% 0% 100%)", duration: 0.3, ease: "power2.in" }, 17.68);
+      tl.fromTo("#tag-aprendido-box", { clipPath: "inset(0% 100% 0% 0%)", x: -30 }, { clipPath: "inset(0% 0% 0% 0%)", x: 0, duration: 0.45, ease: "expo.out" }, 23.5);
+      tl.fromTo("#tag-aprendido .tag-text", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 23.62);
+      tl.to("#tag-aprendido-box", { clipPath: "inset(0% 0% 0% 100%)", duration: 0.3, ease: "power2.in" }, 27.68);
+      tl.fromTo("#tag-siguiente-box", { clipPath: "inset(0% 100% 0% 0%)", x: -30 }, { clipPath: "inset(0% 0% 0% 0%)", x: 0, duration: 0.45, ease: "expo.out" }, 28.5);
+      tl.fromTo("#tag-siguiente .tag-text", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 28.62);
+      tl.to("#tag-siguiente-box", { clipPath: "inset(0% 0% 0% 100%)", duration: 0.3, ease: "power2.in" }, 32.48);
+      tl.fromTo("#tag-coach-box", { clipPath: "inset(0% 100% 0% 0%)", x: -30 }, { clipPath: "inset(0% 0% 0% 0%)", x: 0, duration: 0.45, ease: "expo.out" }, 39);
+      tl.fromTo("#tag-coach .tag-text", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 39.12);
+      tl.to("#tag-coach-box", { clipPath: "inset(0% 0% 0% 100%)", duration: 0.3, ease: "power2.in" }, 44.48);
+      tl.fromTo("#tag-completado-box", { clipPath: "inset(0% 100% 0% 0%)", x: -30 }, { clipPath: "inset(0% 0% 0% 0%)", x: 0, duration: 0.45, ease: "expo.out" }, 45.5);
+      tl.fromTo("#tag-completado .tag-text", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 45.62);
+      tl.to("#tag-completado-box", { clipPath: "inset(0% 0% 0% 100%)", duration: 0.3, ease: "power2.in" }, 48.28);
+
+      // Zoom al coach en acción
+      tl.to("#w-coach", { scale: 1.05, xPercent: -2, duration: 7.5, ease: "sine.inOut" }, 37.7);
+
+      // Pantalla final
+      tl.fromTo("#end-glow", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: "power2.out" }, 48.7);
+      tl.to("#end-glow", { scale: 1.08, duration: 2.2, ease: "sine.inOut" }, 49.95);
+      tl.fromTo("#end-kicker", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 48.8);
+      tl.fromTo("#end-logo", { scale: 1.25, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 48.75);
+      tl.fromTo("#end-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, 49.05);
+      tl.fromTo("#end-sub", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 49.3);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

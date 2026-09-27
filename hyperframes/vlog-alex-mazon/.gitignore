@@ -1,0 +1,9 @@
+# Derivado pesado; regenerar con ./prepare-media.sh
+assets/footage.mp4
+# Renders: solo se versiona la copia ligera
+renders/*
+!renders/vlog-alex-mazon-ligero.mp4
+snapshots/
+node_modules/
+.hyperframes/
+.media/
